@@ -1,0 +1,42 @@
+<h2>Edit Recipe</h2>
+<form name="recipeForm" ng-submit="save()" class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="title">Title:</label>
+    <div class="controls">
+      <input ng-model="recipe.title" class="input-xlarge" id="title">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="description">Description:</label>
+    <div class="controls">
+      <textarea ng-model="recipe.description" class="input-xlarge" id="description"></textarea>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="ingredients">Ingredients:</label>
+    <div class="controls">
+      <ul id="ingredients" class="unstyled" ng-controller="IngredientsCtrl">
+        <li ng-repeat="ingredient in recipe.ingredients">
+          <input ng-model="ingredient.amount" class="input-mini">
+          <input ng-model="ingredient.amountUnits" class="input-small">
+          <input ng-model="ingredient.ingredientName">
+          <button class="btn btn-mini" ng-click="addIngredient()" ng-show="$last"><i class="icon-plus-sign"></i> Add </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="instructions">Instructions:</label>
+    <div class="controls">
+      <textarea ng-model="recipe.instructions" class="input-xxlarge" id="instructions"></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary">Save</button>
+    <button ng-click="remove()" ng-show="!recipe.id" class="btn">Delete</button>
+  </div>
+</form>
