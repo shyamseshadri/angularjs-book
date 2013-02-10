@@ -17,7 +17,7 @@
 </head>
 
 <body ng-controller="MainCtrl">
-<input id="dateField" datepicker ng-model="currentDate" on-select="updateMyText(date)">
+<input id="dateField" datepicker ng-model="$parent.currentDate" select="updateMyText(date)">
 <br/>
 {{myText}} - {{currentDate}}
 </body>

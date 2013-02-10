@@ -3,6 +3,9 @@ angular.module('myApp.directives', []).
     return {
       restrict: 'A',       // Only allow this directive as an attribute
       require: '?ngModel', // Always use along with an ng-model
+      scope: {
+        select: '&'        // Bind the select function we refer to the right scope
+      },
       link: function(scope, element, attrs, ngModel) {
         if (!ngModel) return;
 
@@ -17,9 +20,9 @@ angular.module('myApp.directives', []).
 
         optionsObj.onSelect = function(dateTxt, picker) {
           updateModel(dateTxt);
-          if (attrs.onSelect) {
+          if (scope.select) {
             scope.$apply(function() {
-              scope[attrs.onSelect](dateTxt);
+              scope.select({date: dateTxt});
             });
           }
         };
