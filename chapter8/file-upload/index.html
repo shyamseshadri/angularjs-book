@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head lang="en">
+  <meta charset="utf-8">
+  <title>File Upload with AngularJS</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://raw.github.com/blueimp/jQuery-File-Upload/master/js/vendor/jquery.ui.widget.js"></script>
+  <script src="http://raw.github.com/blueimp/jQuery-File-Upload/master/js/jquery.iframe-transport.js"></script>
+  <script src="http://raw.github.com/blueimp/jQuery-File-Upload/master/js/jquery.fileupload.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <script src="app.js"></script>
+  <script src="directives.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+File Upload:
+<input id="testUpload" type="file" fileupload name="files[]" data-url="/server/uploadFile" multiple done="uploadFinished(e, data)">
+</body>
+
+</html>

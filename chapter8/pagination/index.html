@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Pagination Service</title>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <script src="pagination.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+  <input type="text" ng-model="query">
+  <ul>
+    <li ng-repeat="item in searchPaginator.currentPageItems">{{item}}</li>
+  </ul>
+  <a href="" ng-click="searchPaginator.previous()" ng-show="searchPaginator.hasPrevious()">&lt;&lt; Prev</a>
+  <a href="" ng-click="searchPaginator.next()" ng-show="searchPaginator.hasNext()">Next &gt;&gt;</a>
+</body>
+
+</html>

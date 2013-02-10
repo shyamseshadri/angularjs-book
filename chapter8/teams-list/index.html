@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Custom Plunker</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/bootstrap.min.js"></script>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <script src="services.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+<div class="row-fluid">
+  <div class="span3" ng-controller="FilterCtrl">
+    <form class="form-horizontal">
+
+      <div class="controls-row">
+        <label for="searchTextBox" class="control-label">Search:</label>
+        <div class="controls">
+          <input type="text" id="searchTextBox" ng-model="filterService.searchText">
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <label for="sportComboBox" class="control-label">Sport:</label>
+        <div class="controls">
+          <select id="sportComboBox" ng-model="filterService.filters.sport">
+            <option ng-repeat="sport in ['Basketball', 'Baseball', 'Football']">{{sport}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <label for="cityComboBox" class="control-label">City:</label>
+        <div class="controls">
+          <select id="cityComboBox" ng-model="filterService.filters.city">
+            <option ng-repeat="city in ['Dallas', 'Los Angeles', 'Boston', 'New York']">{{city}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <label class="control-label">Featured:</label>
+        <div class="controls">
+          <input type="checkbox" ng-model="filterService.filters.featured" ng-false-value="" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="offset1 span8" ng-controller="ListCtrl">
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sport</th>
+        <th>City</th>
+        <th>Featured</th>
+      </tr>
+      </thead>
+      <tbody id="teamListTable">
+      <tr ng-repeat="team in teamsList | filter:filterService.filters | filter:filterService.searchText">
+        <td>{{team.name}}</td>
+        <td>{{team.sport}}</td>
+        <td>{{team.city}}</td>
+        <td>{{team.featured}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

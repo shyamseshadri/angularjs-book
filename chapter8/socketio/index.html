@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Anonymous Broadcaster</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+
+  <script src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+<input type="text" ng-model="message">
+<button ng-click="broadcast()">Broadcast</button>
+
+<ul>
+  <li ng-repeat="msg in messages">{{msg}}</li>
+</ul>
+</body>
+</html>
