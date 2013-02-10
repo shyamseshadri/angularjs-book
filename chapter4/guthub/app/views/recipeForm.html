@@ -22,8 +22,9 @@
           <input ng-model="ingredient.amount" class="input-mini">
           <input ng-model="ingredient.amountUnits" class="input-small">
           <input ng-model="ingredient.ingredientName">
-          <button class="btn btn-mini" ng-click="addIngredient()" ng-show="$last"><i class="icon-plus-sign"></i> Add </button>
+          <button type="button" class="btn btn-mini" ng-click="removeIngredient($index)"><i class="icon-minus-sign"></i> Delete </button>
         </li>
+        <button type="button" class="btn btn-mini" ng-click="addIngredient()"><i class="icon-plus-sign"></i> Add </button>
       </ul>
     </div>
   </div>
@@ -37,6 +38,6 @@
 
   <div class="form-actions">
     <button class="btn btn-primary">Save</button>
-    <button ng-click="remove()" ng-show="!recipe.id" class="btn">Delete</button>
+    <button type="button" ng-click="remove()" ng-show="!recipe.id" class="btn">Delete</button>
   </div>
 </form>

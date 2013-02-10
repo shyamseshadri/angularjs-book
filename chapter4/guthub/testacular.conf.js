@@ -1,4 +1,5 @@
 // Testacular configuration
+// Generated on Sun Feb 10 2013 20:46:15 GMT+0530 (IST)
 
 
 // base path, that will be used to resolve files and exclude
@@ -9,11 +10,13 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'app/scripts/vendor/angular.js',
+  'app/scripts/vendor/angular.min.js',
+  'app/scripts/vendor/angular-resource.min.js',
   'test/vendor/angular-mocks.js',
-  'app/scripts/*.js',
-  'app/scripts/**/*.js',
-  'test/spec/**/*.js'
+  'app/scripts/controllers/*.js',
+  'app/scripts/services/*.js',
+  'app/scripts/directives/*.js',
+  'test/spec/*.js'
 ];
 
 
@@ -24,8 +27,8 @@ exclude = [
 
 
 // test results reporter to use
-// possible values: dots || progress
-reporter = 'progress';
+// possible values: 'dots', 'progress', 'junit'
+reporters = ['progress'];
 
 
 // web server port
@@ -46,7 +49,7 @@ logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
 
 
 // Start these browsers, currently available:
@@ -54,9 +57,14 @@ autoWatch = false;
 // - ChromeCanary
 // - Firefox
 // - Opera
-// - Safari
+// - Safari (only Mac)
 // - PhantomJS
-browsers = ['PhantomJS'];
+// - IE (only Windows)
+browsers = ['Chrome'];
+
+
+// If browser does not capture in given timeout [ms], kill it
+captureTimeout = 5000;
 
 
 // Continuous Integration mode

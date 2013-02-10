@@ -9,14 +9,16 @@ directives.directive('markdown', function() {
     scope: {content: '&content'},
     link: function(scope, element, attrs) {
       scope.$watch(scope.content, function(value) {
-        var htmlText = showdown.makeHtml(value);
-        element.html(htmlText);
+        if (value) {
+          var htmlText = showdown.makeHtml(value);
+          element.html(htmlText);
+        }
       });
     }
   };
 });
 
-directives.directive('butterbar', function($rootScope) {
+directives.directive('butterbar', ['$rootScope', function($rootScope) {
   return {
     link: function(scope, element, attrs) {
       element.addClass('hide');
@@ -30,7 +32,7 @@ directives.directive('butterbar', function($rootScope) {
       });
     }
   };
-});
+}]);
 
 directives.directive('focus', function() {
   return {
