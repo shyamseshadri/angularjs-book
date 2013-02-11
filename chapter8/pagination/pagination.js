@@ -1,6 +1,9 @@
 var app = angular.module('myApp.services', []);
 
 app.factory('Paginator', function() {
+  // Despite being a factory, the user of the service gets a new
+  // Paginator every time he calls the service. This is because
+  // we return a function that provides an object when executed
   return function(fetchFunction, pageSize) {
     pageSize = pageSize || 10;
     var paginator = {

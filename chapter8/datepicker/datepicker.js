@@ -1,8 +1,13 @@
-angular.module('myApp.directives', []).
-  directive('datepicker', function() {
+angular.module('myApp.directives', [])
+  .directive('datepicker', function() {
     return {
-      restrict: 'A',       // Only allow this directive as an attribute
-      require: '?ngModel', // Always use along with an ng-model
+      // Enforce the angularJS default of restricting the directive to
+      // attributes only
+      restrict: 'A',
+      // Always use along with an ng-model
+      require: '?ngModel',
+      // This method needs to be defined and passed in from the
+      // passed in to the directive from the view controller
       scope: {
         select: '&'        // Bind the select function we refer to the right scope
       },
@@ -14,6 +19,8 @@ angular.module('myApp.directives', []).
         optionsObj.dateFormat = 'mm/dd/yy';
         var updateModel = function(dateTxt) {
           scope.$apply(function () {
+            // Call the internal AngularJS helper to
+            // update the two way binding
             ngModel.$setViewValue(dateTxt);
           });
         };
@@ -27,8 +34,8 @@ angular.module('myApp.directives', []).
           }
         };
 
-        //updateModel();
         ngModel.$render = function() {
+          // Use the AngularJS internal 'binding-specific' variable
           element.datepicker('setDate', ngModel.$viewValue || '');
         };
         element.datepicker(optionsObj);

@@ -1,5 +1,7 @@
 var app = angular.module('myApp', []);
 
+// We define a factory the socket service is instantiated only once, and
+// thus act as a singleton for the scope of the application
 app.factory('socket', function ($rootScope) {
   var socket = io.connect('http://localhost:8080');
   return {

@@ -4,6 +4,7 @@
 <head lang="en">
   <meta charset="utf-8">
   <title>File Upload with AngularJS</title>
+  <!-- Because we are loading jQuery before AngularJS, Angular will use the jQuery library instead of its own jQueryLite implementation -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://raw.github.com/blueimp/jQuery-File-Upload/master/js/vendor/jquery.ui.widget.js"></script>
   <script src="http://raw.github.com/blueimp/jQuery-File-Upload/master/js/jquery.iframe-transport.js"></script>
@@ -19,6 +20,7 @@
 
 <body ng-controller="MainCtrl">
 File Upload:
+<!-- We will define uploadFinished in MainCtrl and attach it to the scope, so that it is available here -->
 <input id="testUpload" type="file" fileupload name="files[]" data-url="/server/uploadFile" multiple done="uploadFinished(e, data)">
 </body>
 

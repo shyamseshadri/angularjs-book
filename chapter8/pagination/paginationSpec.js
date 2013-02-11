@@ -5,8 +5,8 @@ describe('Paginator Service', function() {
   var paginator;
 
   var items = [1, 2, 3, 4, 5, 6];
-  var fetchFn = function(offset, limit, cb) {
-    cb(items.slice(offset, offset + limit));
+  var fetchFn = function(offset, limit, callback) {
+    callback(items.slice(offset, offset + limit));
   };
 
   beforeEach(inject(function(Paginator) {

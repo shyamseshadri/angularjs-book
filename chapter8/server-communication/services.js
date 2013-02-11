@@ -44,12 +44,14 @@ servicesModule.factory('Authentication', function() {
   };
 });
 
+// This factory is only evaluated once, and authHttp is memoized. That is,
+// future requests to authHttp service return the same instance of authHttp
 servicesModule.factory('authHttp', function($http, Authentication) {
   var authHttp = {};
 
   // Append the right header to the request
   var extendHeaders = function(config) {
-    config.headers = config.headers | {};
+    config.headers = config.headers || {};
     config.headers['Authorization'] = Authentication.getTokenType() + ' ' + Authentication.getAccessToken();
   };
 
