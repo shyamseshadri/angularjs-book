@@ -2,6 +2,7 @@
 
 <div>{{recipe.description}}</div>
 
+<h3>Ingredients</h3>
 <ul class="unstyled">
   <li ng-repeat="ingredient in recipe.ingredients">
     <span>{{ingredient.amount}}</span>
@@ -10,7 +11,8 @@
   </li>
 </ul>
 
-<markdown content="recipe.instructions"></markdown>
+<h3>Instructions</h3>
+<div>{{recipe.instructions}}</div>
 
 <form ng-submit="edit()" class="form-horizontal">
   <div class="form-actions">

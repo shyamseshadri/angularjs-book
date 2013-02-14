@@ -29,14 +29,14 @@ describe('Controllers', function() {
     });
   });
 
-  describe('RecipesLoader', function() {
+  describe('MultiRecipeLoader', function() {
     var mockBackend, recipe, loader;
     // The _$httpBackend_ is the same as $httpBackend. Only written this way to
     // differentiate between injected variables and local variables
-    beforeEach(inject(function(_$httpBackend_, Recipe, RecipesLoader) {
+    beforeEach(inject(function(_$httpBackend_, Recipe, MultiRecipeLoader) {
       recipe = Recipe;
       mockBackend = _$httpBackend_;
-      loader = RecipesLoader;
+      loader = MultiRecipeLoader;
     }));
 
     it('should load list of recipes', function() {
@@ -64,7 +64,7 @@ describe('Controllers', function() {
       location = $location;
       $scope = $rootScope.$new();
 
-      ctrl = $controller('EditRecipeCtrl', {
+      ctrl = $controller('EditCtrl', {
         $scope: $scope,
         $location: $location,
         recipe: new Recipe({id: 1, title: 'Recipe'})

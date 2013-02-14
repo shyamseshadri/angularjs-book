@@ -1,19 +1,20 @@
 'use strict';
 
-var app = angular.module('guthub', ['directives', 'services']);
+var app = angular.module('guthub',
+    ['guthub.directives', 'guthub.services']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
       when('/', {
         controller: 'ListCtrl',
         resolve: {
-          recipes: function(RecipesLoader) {
-            return RecipesLoader();
+          recipes: function(MultiRecipeLoader) {
+            return MultiRecipeLoader();
           }
         },
         templateUrl:'/views/list.html'
       }).when('/edit/:recipeId', {
-        controller: 'EditRecipeCtrl',
+        controller: 'EditCtrl',
         resolve: {
           recipe: function(RecipeLoader) {
             return RecipeLoader();
@@ -21,7 +22,7 @@ app.config(['$routeProvider', function($routeProvider) {
         },
         templateUrl:'/views/recipeForm.html'
       }).when('/view/:recipeId', {
-        controller: 'ViewRecipeCtrl',
+        controller: 'ViewCtrl',
         resolve: {
           recipe: function(RecipeLoader) {
             return RecipeLoader();
@@ -29,16 +30,18 @@ app.config(['$routeProvider', function($routeProvider) {
         },
         templateUrl:'/views/viewRecipe.html'
       }).when('/new', {
-        controller: 'NewRecipeCtrl',
+        controller: 'NewCtrl',
         templateUrl:'/views/recipeForm.html'
       }).otherwise({redirectTo:'/'});
 }]);
 
-app.controller('ListCtrl', ['$scope', 'recipes', function($scope, recipes) {
+app.controller('ListCtrl', ['$scope', 'recipes',
+    function($scope, recipes) {
   $scope.recipes = recipes;
 }]);
 
-app.controller('ViewRecipeCtrl', ['$scope', '$location', 'recipe', function($scope, $location, recipe) {
+app.controller('ViewCtrl', ['$scope', '$location', 'recipe',
+    function($scope, $location, recipe) {
   $scope.recipe = recipe;
 
   $scope.edit = function() {
@@ -46,7 +49,8 @@ app.controller('ViewRecipeCtrl', ['$scope', '$location', 'recipe', function($sco
   };
 }]);
 
-app.controller('EditRecipeCtrl', ['$scope', '$location', 'recipe', function($scope, $location, recipe) {
+app.controller('EditCtrl', ['$scope', '$location', 'recipe',
+    function($scope, $location, recipe) {
   $scope.recipe = recipe;
 
   $scope.save = function() {
@@ -61,8 +65,11 @@ app.controller('EditRecipeCtrl', ['$scope', '$location', 'recipe', function($sco
   };
 }]);
 
-app.controller('NewRecipeCtrl', ['$scope', '$location', 'Recipe', function($scope, $location, Recipe) {
-  $scope.recipe = new Recipe({ingredients:[{}]});
+app.controller('NewCtrl', ['$scope', '$location', 'Recipe',
+    function($scope, $location, Recipe) {
+  $scope.recipe = new Recipe({
+    ingredients: [ {} ]
+  });
 
   $scope.save = function() {
     $scope.recipe.$save(function(recipe) {
@@ -71,7 +78,8 @@ app.controller('NewRecipeCtrl', ['$scope', '$location', 'Recipe', function($scop
   };
 }]);
 
-app.controller('IngredientsCtrl', ['$scope', function($scope) {
+app.controller('IngredientsCtrl', ['$scope',
+    function($scope) {
   $scope.addIngredient = function() {
     var ingredients = $scope.recipe.ingredients;
     ingredients[ingredients.length] = {};

@@ -11,14 +11,17 @@ app.configure(function(){
 
 var recipes_map = {
   '1': {
-    id: 1,
-    'title': 'Recipe 1',
-    'description': 'Description 1',
-    'instructions': 'Instruction 1',
-    ingredients: [
-      {amount: 3, amountUnits: 'pounds', ingredientName: 'Awesomeness'},
-      {amount: 5, amountUnits: 'stuff', ingredientName: 'Good stuff'}
-    ]
+    "id": "1",
+    "title": "Cookies",
+    "description": "Delicious, crisp on the outside, chewy on the outside, oozing with chocolatey goodness cookies. The best kind",
+    "ingredients": [
+      {
+        "amount": "1",
+        "amountUnits": "packet",
+        "ingredientName": "Chips Ahoy"
+      }
+    ],
+    "instructions": "1. Go buy a packet of Chips Ahoy\n2. Heat it up in an oven\n3. Enjoy warm cookies\n4. Learn how to bake cookies from somewhere else"
   },
   '2': {
     id: 2,
