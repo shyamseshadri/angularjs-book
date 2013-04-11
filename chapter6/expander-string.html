@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app='expanderModule'>
+<head>
+  <title>Expander</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+  <link href="expander.css" rel='stylesheet'>
+</head>
+<body ng-controller='SomeController' >
+  <expander class='expander' expander-title='{{title}}'>
+    {{text}}
+  </expander>
+  <expander class='expander' expander-title='I am clickable'>
+    {{text}}
+  </expander>
+</body>
+
+<script>
+  function SomeController($scope) {
+    $scope.title = 'Click me to expand';
+    $scope.text = 'Hi there folks, I am the content that was hidden but is now shown.';
+  }
+
+angular.module('expanderModule', [])
+  .directive('expander', function(){
+    return {
+      restrict: 'EA',
+      replace: true,
+      transclude: true,
+      scope: { title:'@expanderTitle' },
+      template: '<div>' +
+          '<div class="title" ng-click="toggle()">{{title}}</div>' +
+          '<div class="body" ng-show="showMe" ng-transclude></div>' +
+          '</div>',
+      link: function(scope, element, attrs) {
+        scope.showMe = false;
+
+        scope.toggle = function toggle() {
+          scope.showMe = !scope.showMe;
+        }
+      }
+    }
+  });
+</script>
+</html>

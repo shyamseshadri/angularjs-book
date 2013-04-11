@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang='en' ng-app>
+  <head>
+    <title>Validate me!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <style type="text/css">
+    .ng-invalid {
+      border-color: red;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Sign Up</h1>
+    <form name='addUserForm' ng-controller="AddUserController">
+      <div ng-show='message'>{{message}}</div>
+      <div>First name: <input name='firstName' ng-model='user.first' required></input></div>
+      <div>Last name: <input ng-model='user.last' required></input></div>
+      <div>Email: <input type='email' ng-model='user.email' required></input></div>
+      <div>Age: <input type='number' ng-model='user.age' ng-maxlength='3' ng-min='1'></input></div>
+      <div><button ng-click='addUser()' ng-disabled='!addUserForm.$valid'>Submit</button>
+    </ng-form>
+  <script>
+    function AddUserController($scope) {
+      $scope.message = '';
+      
+      $scope.addUser = function () {
+        $scope.message = 'Thanks, ' + $scope.user.first + ', we added you!';
+      };
+    }  
+  </script>
+  </body>
+</html>

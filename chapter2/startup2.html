@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  </head>
+  <body>
+    <form ng-submit="requestFunding()" ng-controller="StartUpController">
+      Starting: <input ng-change="computeNeeded()" ng-model="startingEstimate">
+      Recommendation: {{needed}}
+      <button>Fund my startup!</button>
+    </form>
+    <script>
+      function StartUpController($scope) {
+        $scope.computeNeeded = function() {
+          $scope.needed = $scope.startingEstimate * 10;
+        };
+
+        $scope.requestFunding = function() {
+          window.alert("Sorry, please get more customers first.");
+        };
+      }
+    </script>
+  </body>
+</html>

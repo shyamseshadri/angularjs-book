@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-controller="MoonPaginationController">
+      <ul>
+        <li ng-repeat="moon in moons">{{moon}}</li>
+      </ul>
+      <button ng-click="next()">Next</button>
+    </div>
+    <script>
+    function MoonPaginationController($scope) {
+      $scope.moons = ['Metis', 'Adrastea', 'Amalthea', 'Thebe', 'Io', 'Europa', 'Ganymede', 'Callisto', 'Themisto', 'Leda', 'Himalia', 'Lysithea', 'Elara', 'S/2000 J 11', 'Carpo', 'S/2003 J 12', 'S/2003 J 12', 'Eupoire', 'S/2003 J 3', 'S/2003 J 18', 'S/2003 J 1', 'S/2003 J 2', 'Thelxinoe', 'Euanthe', 'Helike', 'etc.'];       
+    }
+    </script>
+  </body>
+</html>

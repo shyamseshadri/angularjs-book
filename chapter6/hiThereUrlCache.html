@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang='en' ng-app='app'>
+  <head>
+    <title>Hi</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  </head>
+  <body>
+    <hello></hello>
+    
+  <script>
+    var appModule = angular.module('app', []);
+    
+    appModule.run(function($templateCache) {
+      $templateCache.put('helloTemplateCached.html', '<div>Hi there</div>');
+    });
+    
+    appModule.directive('hello', function() {
+      return {
+        restrict: 'E',
+        templateUrl: 'helloTemplateCached.html',
+        replace: true
+      };
+    });
+  </script>
+
+  </body>
+</html>

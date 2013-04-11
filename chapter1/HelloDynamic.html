@@ -1,0 +1,12 @@
+<html ng-app>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  <script src="controllers.js"></script>
+</head>
+<body>
+  <div ng-controller='HelloController'>
+    <input ng-model='greeting.text'>
+    <p>{{greeting.text}}, World</p>
+  </div>
+</body>
+</html>

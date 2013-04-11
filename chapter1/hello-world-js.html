@@ -1,0 +1,21 @@
+<html>
+<head><title>Hello, World in JavaScript</title></head>
+<body>
+<p id="greeting"></p>
+<script type="text/javascript">
+  var isIE = document.attachEvent;
+  var addListener = isIE
+      ? function(e, t, fn) {e.attachEvent('on' + t, fn);}
+      : function(e, t, fn) {e.addEventListener(t, fn, false);};
+
+  addListener(window, 'load', function() {
+    var greeting = document.getElementById('greeting');
+    if (isIE) {
+      greeting.innerText = 'Hello, World';
+    } else {
+      greeting.textContent = 'Hello, World';
+    }
+  });
+</script>
+</body>
+</html>

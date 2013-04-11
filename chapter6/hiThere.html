@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang='en' ng-app='app'>
+  <head>
+    <title>Hi</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+  </head>
+  <body>
+    <hello></hello>
+  <script>
+    var appModule = angular.module('app', []);
+    appModule.directive('hello', function() {
+      return {
+        restrict: 'E',
+        template: '<div>Hi there</div>',
+        replace: true
+      };
+    });
+  </script>
+  </body>
+</html>

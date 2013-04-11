@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  </head>
+  <body>
+    <table ng-controller='AlbumController'>
+      <tr>
+        <td ng-click='sortByName()'>Name</td>
+        <td ng-click='sortByDuration()'>Duration</td>
+      </tr>
+      <tr ng-repeat='track in album'>
+        <td>{{track.name}}</td>
+        <td>{{track.duration}}</td>
+      </tr>
+    </table>
+    <script>
+      function AlbumController($scope) {
+        $scope.album = [{name:'Southwest Serenade', duration: '5:34'},
+                     {name:'Northern Light Waltz', duration: '3:21'},
+                     {name:'Eastern Tango', duration: '17:45'}];
+        
+        $scope.sortByName = function () {
+          var sorter = function(a, b) {
+            var A = a['name'], B = b['name'];
+            return ((A < B) ? -1 : (A > B) ? +1 : 0);
+          };
+          
+          $scope.album = $scope.album.sort(sorter);
+        };
+        
+        $scope.sortByDuration = function () {
+          var sorter = function(a, b) {
+            var A = a['duration'], B = b['duration'];
+            return ((A < B) ? -1 : (A > B) ? 1 : 0);
+          };
+
+          $scope.album = $scope.album.sort(sorter);
+        };
+        
+      }
+    </script>
+  </body>
+</html>

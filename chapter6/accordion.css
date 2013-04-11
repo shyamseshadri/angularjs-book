@@ -1,0 +1,16 @@
+.expander {
+  border: 1px solid black;
+  margin: 1px;
+  width: 250px;
+}
+
+.expander > .title {
+  background-color: black;
+  color: white;
+  padding: .1em .3em;
+  cursor: pointer;
+}
+
+.expander > .body {
+  padding: .1em .3em;
+}
