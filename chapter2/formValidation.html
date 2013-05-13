@@ -14,20 +14,25 @@
     <h1>Sign Up</h1>
     <form name='addUserForm' ng-controller="AddUserController">
       <div ng-show='message'>{{message}}</div>
-      <div>First name: <input name='firstName' ng-model='user.first' required></input></div>
-      <div>Last name: <input ng-model='user.last' required></input></div>
-      <div>Email: <input type='email' ng-model='user.email' required></input></div>
-      <div>Age: <input type='number' ng-model='user.age' ng-maxlength='3' ng-min='1'></input></div>
-      <div><button ng-click='addUser()' ng-disabled='!addUserForm.$valid'>Submit</button>
-    </ng-form>
+      <div>First name: <input name='firstName' ng-model='user.first' required></div>
+      <div>Last name: <input ng-model='user.last' required></div>
+      <div>Email: <input type='email' ng-model='user.email' required></div>
+      <div>Age: <input type='number'
+                       ng-model='user.age'
+                       ng-maxlength='3'
+                       ng-min='1'></div>
+      <div><button ng-click='addUser()'
+                   ng-disabled='!addUserForm.$valid'>Submit</button></div>
+    </form>
   <script>
     function AddUserController($scope) {
       $scope.message = '';
-      
+
       $scope.addUser = function () {
+        // TODO for the reader: actually save user to database...
         $scope.message = 'Thanks, ' + $scope.user.first + ', we added you!';
       };
-    }  
+    }
   </script>
   </body>
 </html>

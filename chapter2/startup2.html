@@ -5,14 +5,15 @@
   </head>
   <body>
     <form ng-submit="requestFunding()" ng-controller="StartUpController">
-      Starting: <input ng-change="computeNeeded()" ng-model="startingEstimate">
-      Recommendation: {{needed}}
+      Starting: <input ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+      Recommendation: {{funding.needed}}
       <button>Fund my startup!</button>
     </form>
     <script>
       function StartUpController($scope) {
+        $scope.funding = { startingEstimate: 0 };
         $scope.computeNeeded = function() {
-          $scope.needed = $scope.startingEstimate * 10;
+          $scope.funding.needed = $scope.funding.startingEstimate * 10;
         };
 
         $scope.requestFunding = function() {

@@ -2,7 +2,7 @@
 <html lang='en' ng-app>
   <head>
     <title>Shopping Cart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
   </head>
 
   <body ng-controller="ShoppingController">
@@ -14,13 +14,12 @@
         <td>{{item.price | currency}}</td>
       </tr>
     </table>
-  </div>
-  <script>
-    function ShoppingController($scope, $http) {
-      $http.get('/products').success(function(data, status, headers, config) {
-        $scope.items = data;
-      });
-    }  
-  </script>
+    <script>
+      function ShoppingController($scope, $http) {
+        $http.get('/products').success(function(data, status, headers, config) {
+          $scope.items = data;
+        });
+      }
+    </script>
   </body>
 </html>

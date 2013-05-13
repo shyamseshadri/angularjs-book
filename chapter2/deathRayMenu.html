@@ -6,19 +6,21 @@
   <body>
     <div ng-controller='DeathrayMenuController'>
       <button ng-click='toggleMenu()'>Toggle Menu</button>
-      <ul ng-show='showMenu'>
+      <ul ng-show='menuState.show'>
         <li ng-click='stun()'>Stun</li>
         <li ng-click='disintegrate()'>Disintegrate</li>
         <li ng-click='erase()'>Erase from history</li>
       </ul>
-    <div/>
+    </div>
     <script>
       function DeathrayMenuController($scope) {
-        $scope.showMenu = false;
+        $scope.menuState = { show: false };
 
         $scope.toggleMenu = function() {
-          $scope.showMenu = !$scope.showMenu;
+          $scope.menuState.show = !$scope.menuState.show;
         };
+
+        // death ray functions left as exercise to reader
       }
     </script>
   </body>

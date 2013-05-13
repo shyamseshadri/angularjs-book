@@ -3,7 +3,8 @@
 <div>{{recipe.description}}</div>
 
 <h3>Ingredients</h3>
-<ul class="unstyled">
+<span ng-show="recipe.ingredients.length == 0">No Ingredients</span>
+<ul class="unstyled" ng-hide="recipe.ingredients.length == 0">
   <li ng-repeat="ingredient in recipe.ingredients">
     <span>{{ingredient.amount}}</span>
     <span>{{ingredient.amountUnits}}</span>

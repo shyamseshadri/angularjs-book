@@ -3,7 +3,7 @@
   <div class="control-group">
     <label class="control-label" for="title">Title:</label>
     <div class="controls">
-      <input ng-model="recipe.title" class="input-xlarge" id="title" focus>
+      <input ng-model="recipe.title" class="input-xlarge" id="title" focus required>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
   </div>
 
   <div class="form-actions">
-    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-primary" ng-disabled="recipeForm.$invalid">Save</button>
     <button type="button" ng-click="remove()" ng-show="!recipe.id" class="btn">Delete</button>
   </div>
 </form>

@@ -5,19 +5,18 @@
     <link href="bootstrap.css" rel="stylesheet">
   </head>
 
-  <body ng-controller="CartController">
-    <table>
-      <tr ng-repeat="item in items">
-        <td>{{item.title}}</td>
-        <td><input ng-model="item.quantity"></td>
-        <td>{{item.price | currency}}</td>
-        <td>{{item.price * item.quantity | currency}}</td>
-      </tr>
-    </table>
-  </div>
-  <div>Total: {{totalCart() | currency}}</div>
-  <div>Discount: {{bill.discount | currency}}</div>
-  <div>Subtotal: {{subtotal() | currency}}</div>
+  <body>
+    <div ng-controller="CartController">
+      <div ng-repeat="item in items">
+        <span>{{item.title}}</span>
+        <input ng-model="item.quantity">
+        <span>{{item.price | currency}}</span>
+        <span>{{item.price * item.quantity | currency}}</span>
+      </div>
+      <div>Total: {{totalCart() | currency}}</div>
+      <div>Discount: {{bill.discount | currency}}</div>
+      <div>Subtotal: {{subtotal() | currency}}</div>
+    </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
   <script>
     function CartController($scope) {
@@ -31,18 +30,20 @@
 
       $scope.totalCart = function() {
         var total = 0;
-        for (var i = 0; i < $scope.items.length; i++) {
+        for (var i = 0, len = $scope.items.length; i < len; i++) {
           total = total + $scope.items[i].price * $scope.items[i].quantity;
         }
 
         return total;
       };
-      
-      $scope.subtotal = function() { return $scope.totalCart() - $scope.bill.discount; };
+
+      $scope.subtotal = function() {
+        return $scope.totalCart() - $scope.bill.discount;
+      };
 
       function calculateDiscount(newValue, oldValue, scope) {
-        scope.bill.discount = newValue > 100 ? 10 : 0;
-      };
+        $scope.bill.discount = newValue > 100 ? 10 : 0;
+      }
 
       $scope.$watch($scope.totalCart, calculateDiscount);
     }

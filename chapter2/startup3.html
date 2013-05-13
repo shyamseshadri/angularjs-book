@@ -4,18 +4,27 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
   </head>
   <body>
-    <ul ng-controller='StudentListController'>
-      <li ng-repeat='student in students'>
-        <a href='/student/view/{{student.url}}'>{{student.name}}</a>
-      </li>
-    </ul>
+    <form ng-controller="StartUpController">
+      Starting: <input ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+      Recommendation: {{funding.needed}}
+      <button ng-click="requestFunding()">Fund my startup!</button>
+      <button ng-click="reset()">Reset</button>
+    </form>
     <script>
-      var students = [{name:'Mary Contrary', id:'1'},
-                      {name:'Jack Sprat', id:'2'},
-                      {name:'Jill Hill', id:'3'}];
+      function StartUpController($scope) {
+        $scope.funding = { startingEstimate: 0 };
+        $scope.computeNeeded = function() {
+          $scope.funding.needed = $scope.funding.startingEstimate * 10;
+        };
 
-      function StudentListController($scope) {
-        $scope.students = students;
+        $scope.requestFunding = function() {
+          window.alert("Sorry, please get more customers first.");
+        };
+
+        $scope.reset = function() {
+          $scope.funding.startingEstimate = 0;
+          $scope.funding.needed = 0;
+        };
       }
     </script>
   </body>

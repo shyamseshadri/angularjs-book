@@ -6,13 +6,13 @@
   </head>
 
   <body ng-app='HomeModule' ng-controller="HomeController">
-    <h1>{{pageHeading | titleCase}}</h1>
-    
+   <h1>{{pageHeading | titleCase}}</h1>
+
   <script>
     function HomeController($scope) {
       $scope.pageHeading = 'behold the majesty of your page title';
     }
-    
+
     var homeModule = angular.module('HomeModule', []);
     homeModule.filter('titleCase', function() {
       var titleCaseFilter = function(input) {
@@ -23,7 +23,7 @@
         return words.join(' ');
       };
       return titleCaseFilter;
-    });      
+    });
   </script>
   </body>
 </html>

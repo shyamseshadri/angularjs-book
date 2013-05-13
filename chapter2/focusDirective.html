@@ -6,24 +6,35 @@
   </head>
 
   <body ng-controller="SomeController">
-    <button ng-click="message='unfocused button clicked'">Not focused</button>
-    <button focus ng-click="message='focused button clicked'">I'm very focused!</button>
-    <input ng-model='message'></input>
-  <script>
-    function SomeController($scope) {
-      $scope.message = 'nothing clicked yet';
-    }  
-    
-    var appModule = angular.module('app', ['directives']);
-    var directivesModule = angular.module('directives', []);
-    
-    angular.module('directives', []).directive('focus', function() {
-      return {
-        link: function(scope, element, attrs) {
-          element[0].focus();
-        }
-      };
-    });
-  </script>
+    <button ng-click="clickUnfocused()">
+      Not focused
+    </button>
+    <button ngbk-focus ng-click="clickFocused()">
+      I'm very focused!
+    </button>
+    <div>{{message.text}}</div>
+    <script>
+      function SomeController($scope) {
+        $scope.message = { text: 'nothing clicked yet' };
+
+        $scope.clickUnfocused = function() {
+          $scope.message.text = 'unfocused button clicked';
+        };
+
+        $scope.clickFocused = function() {
+          $scope.message.text = 'focus button clicked';
+        };
+      }
+
+      var appModule = angular.module('app', []);
+
+      appModule.directive('ngbkFocus', function() {
+        return {
+          link: function(scope, element, attrs, controller) {
+            element[0].focus();
+          }
+        };
+      });
+    </script>
   </body>
 </html>
