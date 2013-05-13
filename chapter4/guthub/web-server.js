@@ -45,7 +45,7 @@ app.get('/recipes', function(req, res) {
   // Simulate delay in server
   setTimeout(function() {
     res.send(recipes);
-  }, 3000);
+  }, 500);
 });
 
 app.get('/recipes/:id', function(req, res) {

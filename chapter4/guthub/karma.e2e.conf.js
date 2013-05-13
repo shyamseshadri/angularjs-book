@@ -3,7 +3,7 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  ANGULAR_SCENARIO,
+  'test/vendor/angular-scenario.js',
   ANGULAR_SCENARIO_ADAPTER,
   'test/e2e/*.js'
 ];
@@ -30,7 +30,7 @@ logLevel = LOG_INFO;
 // enable / disable watching file and executing tests whenever any file changes
 autoWatch = true;
 
-urlRoot = '/_testacular_/';
+urlRoot = '/_karma_/';
 
 proxies = {
   '/': 'http://localhost:8080/'

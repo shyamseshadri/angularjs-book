@@ -4,7 +4,7 @@ basePath = '../';
 
 // list of files / patterns to load in the browser
 files = [
-  ANGULAR_SCENARIO,
+  'test/vendor/angular-scenario.js',
   ANGULAR_SCENARIO_ADAPTER,
   'test/e2e/*.js'
 ];

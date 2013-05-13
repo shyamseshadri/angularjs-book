@@ -35,6 +35,9 @@ require([
     ]);
     domReady(function() {
       angular.bootstrap(document, ['MyApp']);
+
+      // The following is required if you want AngularJS Scenario tests to work
+      $('html').addClass('ng-app: MyApp');
     });
   }
 );
