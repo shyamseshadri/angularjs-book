@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [".bundle",".idea",".yardoc","tmp"],
+			"file_exclude_patterns": [".gitkeep","*.sublime-workspace"]
+		}
+	],
+  "settings":
+  {
+      "tab_size": 2
+  }
+}
