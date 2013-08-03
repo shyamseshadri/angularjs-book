@@ -8,25 +8,25 @@ app.config(['$routeProvider', function($routeProvider) {
       when('/', {
         controller: 'ListCtrl',
         resolve: {
-          recipes: function(MultiRecipeLoader) {
+          recipes: ["MultiRecipeLoader", function(MultiRecipeLoader) {
             return MultiRecipeLoader();
-          }
+          }]
         },
         templateUrl:'/views/list.html'
       }).when('/edit/:recipeId', {
         controller: 'EditCtrl',
         resolve: {
-          recipe: function(RecipeLoader) {
+          recipe: ["RecipeLoader", function(RecipeLoader) {
             return RecipeLoader();
-          }
+          }]
         },
         templateUrl:'/views/recipeForm.html'
       }).when('/view/:recipeId', {
         controller: 'ViewCtrl',
         resolve: {
-          recipe: function(RecipeLoader) {
+          recipe: ["RecipeLoader", function(RecipeLoader) {
             return RecipeLoader();
-          }
+          }]
         },
         templateUrl:'/views/viewRecipe.html'
       }).when('/new', {
