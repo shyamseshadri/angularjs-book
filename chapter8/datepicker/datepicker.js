@@ -1,19 +1,16 @@
 angular.module('myApp.directives', [])
-  .directive('datepicker', function() {
+  .directive('datepicker', function($parse) {
     return {
       // Enforce the angularJS default of restricting the directive to
       // attributes only
       restrict: 'A',
       // Always use along with an ng-model
       require: '?ngModel',
-      // This method needs to be defined and passed in from the
-      // passed in to the directive from the view controller
-      scope: {
-        select: '&'        // Bind the select function we refer to the right scope
-      },
       link: function(scope, element, attrs, ngModel) {
         if (!ngModel) return;
-
+        // the "select" argument defines which function the directive
+        // should call when a new date is selected via the UI
+        var selectFn = $parse(attrs.select);
         var optionsObj = {};
 
         optionsObj.dateFormat = 'mm/dd/yy';
@@ -27,9 +24,9 @@ angular.module('myApp.directives', [])
 
         optionsObj.onSelect = function(dateTxt, picker) {
           updateModel(dateTxt);
-          if (scope.select) {
+          if (selectFn) {
             scope.$apply(function() {
-              scope.select({date: dateTxt});
+              selectFn(scope, {date: dateTxt});
             });
           }
         };
