@@ -6,11 +6,11 @@ module.exports = function (config) {
 	// base path, that will be used to resolve files and exclude
 	basePath : '',
 
+    // Fix for "JASMINE is not supported anymore" warning
+    frameworks : ["jasmine"],
 
 	// list of files / patterns to load in the browser
 	files : [
-	  JASMINE,
-	  JASMINE_ADAPTER,
 	  'app/scripts/vendor/angular.min.js',
 	  'app/scripts/vendor/angular-resource.min.js',
 	  'test/vendor/angular-mocks.js',
