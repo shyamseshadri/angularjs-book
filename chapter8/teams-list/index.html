@@ -28,6 +28,7 @@
         <label for="sportComboBox" class="control-label">Sport:</label>
         <div class="controls">
           <select id="sportComboBox" ng-model="filterService.activeFilters.sport">
+			<option value="">Any</option>
             <option ng-repeat="sport in ['Basketball', 'Hockey', 'Football']">{{sport}}</option>
           </select>
         </div>
@@ -37,6 +38,7 @@
         <label for="cityComboBox" class="control-label">City:</label>
         <div class="controls">
           <select id="cityComboBox" ng-model="filterService.activeFilters.city">
+			<option value="">Any</option>
             <option ng-repeat="city in ['Dallas', 'Los Angeles', 'Boston', 'New York']">{{city}}</option>
           </select>
         </div>
